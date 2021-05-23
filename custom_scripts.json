@@ -1,4 +1,4 @@
 {
-  "Crypto chart": "python3 ../binance-chart-plugin-telegram-bot/Main.py",
+  "Crypto chart": "python3 ../binance-chart-plugin-telegram-bot/Chart.py",
   "Update crypto chart": "bash -c 'cd ../binance-chart-plugin-telegram-bot && git pull'"
 }
