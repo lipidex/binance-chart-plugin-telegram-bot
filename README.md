@@ -1,6 +1,6 @@
 # Coin Progress Chart and Database Backup plugin for Binance Trade Bot
 
-This is a program tool based on Binance Trade Bot (https://github.com/edeng23/binance-trade-bot).
+This is a program tool based on [Binance Trade Bot].
 
 The intent of this bot is to retrieve the local database trade infomation, e.g. the orders since last database reset, and store it for several plottings. If you have also a Telegram Bot account, it will automaticalyl connect to it send the results.
 To operate the bot creates a backup of the database to not interfere with the main bot
@@ -51,7 +51,7 @@ TRX: 0.0%
 VET: 0.0% 
 XMR: 0.0% 
 
-**Note** : The data shown are not from your binance account. This program is a tool for Binance Trade Bot (https://github.com/edeng23/binance-trade-bot) aimed to analize the bot behaviours since the last reset.
+**Note** : The data shown are not from your binance account. This program is a tool for [Binance Trade Bot] aimed to analize the bot behaviours since the last reset.
 
 
-```
+[binance trade bot]: https://github.com/edeng23/binance-trade-bot
