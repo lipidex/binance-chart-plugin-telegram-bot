@@ -8,6 +8,7 @@ To operate the bot creates a backup of the database to not interfere with the ma
 ## Install
 
 Create the file `config` based on `config.example`.
+Insert your path to Binance Trade Bot in `bot_path=`
 
 Then run
 ```
