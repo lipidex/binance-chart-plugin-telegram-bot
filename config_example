@@ -1,3 +1,4 @@
 [config]
-bot_path=
-min_timestamp = 0
+bot_path = /../binance-trade-bot
+min_timestamp_binance = 0
+bridge_binance = USDT
