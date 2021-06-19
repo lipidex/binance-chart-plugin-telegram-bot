@@ -41,7 +41,8 @@ The output can be sent to an external service. It detectes the APPRISE file in t
   <img src = "graph.example.png">
 </p>
 
-
+Summary sent as message:
+```
 ADA: 8.91 -> 150.5 (+1589.113%)
 ATOM: 0.813 -> 19.524 (+2301.476%)
 BAT: N.A.
@@ -60,6 +61,7 @@ TRX: 154.0 -> 3437.6 (+2132.208%)
 VET: 114.4 -> 1997.5 (+1646.066%)
 XLM: 28.9 -> 694.1 (+2301.73%)
 XMR: 0.05542 -> 0.9602 (+1632.588%)
+```
 
 **Note** : The data shown are not from your binance account. This program is a tool for [Binance Trade Bot] aimed to analize the bot behaviours since the last reset.
 
