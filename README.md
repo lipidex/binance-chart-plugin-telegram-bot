@@ -2,7 +2,7 @@
 
 This is a program tool based on [Binance Trade Bot].
 
-The intent of this bot is to retrieve the local database trade infomation, e.g. the orders since last database reset, and store it for several plottings. If you have also a Telegram Bot account, it will automaticalyl connect to it send the results.
+The intent of this bot is to retrieve the local database trade infomation, e.g. the orders since last database reset, and store it for several plottings. If you have also a Telegram Bot account, it will automaticaly connect to it send the results.
 To operate the bot creates a backup of the database to not interfere with the main bot
 
 ## Install
