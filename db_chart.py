@@ -35,7 +35,7 @@ target = DB_PATH
 
 if not os.path.exists(DB_PATH):
     print("No backup database (crypto_trading.db.backup) found, creating one...")
-    f = open(BOT_PATH + "data/crypto_trading.db.backup",'w')
+    f = open(BOT_PATH + "/data/crypto_trading.db.backup",'w')
 
 shutil.copyfile(original, target)
 
