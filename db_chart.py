@@ -115,7 +115,7 @@ for crypto in range(0,len(exchange_crypto)):
     for order in orders.fetchall():
         order_list.append(order[0])
     
-    perc = round(((order_list[-1] - order_list[0])/order[0])*100, 3) if len(order_list) > 0 else 0.0
+    perc = round(((order_list[-1] - order_list[0])/order_list[0])*100, 3) if len(order_list) > 0 else 0.0
     perc_str = "+"+str(perc) if perc > 0 else str(perc)
     
     coin_grow.append(order_list)
