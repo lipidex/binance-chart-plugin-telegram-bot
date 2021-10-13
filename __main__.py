@@ -28,7 +28,7 @@ if not os.path.exists(CONFIG_PATH_FILE):
 else:
     config.read(CONFIG_PATH_FILE)
 
-BOT_PATH = path + (os.environ.get("bot_path") or config.get(CFG_SECTION, "bot_path") or "/../binance-trade-bot")
+BOT_PATH = (os.environ.get("bot_path") or config.get(CFG_SECTION, "bot_path") or "/../binance-trade-bot")
 
 # All the path necessary
 ORIGINAL_DB_PATH = BOT_PATH + "/data/crypto_trading.db"
