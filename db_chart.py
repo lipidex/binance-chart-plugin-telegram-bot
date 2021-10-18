@@ -8,7 +8,7 @@ import io
 import os
 import inspect, os.path
 import matplotlib.pyplot as plt
-
+import datetime
 
 # Path files
 filename = inspect.getframeinfo(inspect.currentframe()).filename
@@ -29,6 +29,13 @@ ORIGINAL_DB_PATH = BOT_PATH + "/data/crypto_trading.db"
 DB_PATH = BOT_PATH + "/data/crypto_trading.db.backup"
 COINLIST_PATH_FILE = BOT_PATH + "/supported_coin_list"
 APPRISE_PATH_FILE = BOT_PATH + "/config/apprise.yml"
+
+min_datetime = str(config.get(CFG_SECTION, "min_datetime"))
+try:
+    assert datetime.datetime.strptime(min_datetime, "%Y-%m-%d")
+except:
+    min_datetime = ""
+    print("Wrong date format; expecting YYYY-MM-DD")
 
 original = ORIGINAL_DB_PATH
 target = DB_PATH
@@ -108,8 +115,11 @@ for crypto in range(0,len(exchange_crypto)):
     
     order_list = []
     
-    # retrieving coin list of orders
-    sqlite_select_query = "select alt_trade_amount from trade_history where alt_coin_id=? and state='COMPLETE' and selling=0"
+    # retrieving coin list of orders 
+    if min_datetime != "":
+        sqlite_select_query = "select alt_trade_amount from trade_history where alt_coin_id=? and state='COMPLETE' and selling=0 and DATE(datetime) > '" + str(min_datetime) +"'"
+    else:
+        sqlite_select_query = "select alt_trade_amount from trade_history where alt_coin_id=? and state='COMPLETE' and selling=0"
     orders = cur.execute(sqlite_select_query,[exchange_crypto[crypto]])
     
     for order in orders.fetchall():
