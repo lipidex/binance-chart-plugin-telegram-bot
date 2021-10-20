@@ -11,13 +11,9 @@ Create the file `config` based on `config.example`.
 
 `
 [config]
-Bot path\n
 bot_path=your/path/to/binance-trade-bot
-Datetime format: YYYY-MM-DD\n
 min_datetime = 0
-Display coin value for each coin \n
 enable_coin_value = 1
-Display Fiat evolution graph \n
 enable_fiat_evolution = 1
 `
 
