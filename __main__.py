@@ -1,4 +1,4 @@
-from .db_chart import *
+from db_chart import *
 
 import shutil
 import datetime
@@ -60,7 +60,7 @@ target = DB_PATH
 
 if not os.path.exists(DB_PATH):
     print("No backup database (crypto_trading.db.backup) found, creating one...")
-    f = open(BOT_PATH + "data/crypto_trading.db.backup",'w')
+    f = open(DB_PATH,'w')
 
 shutil.copyfile(original, target)
 
