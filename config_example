@@ -6,3 +6,5 @@ min_datetime = 0
 enable_coin_value = 1
 # display Fiat evolution graph
 enable_fiat_evolution = 1
+# only display active coins
+show_active_coin_only = 1
