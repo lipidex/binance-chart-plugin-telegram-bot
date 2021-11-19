@@ -9,6 +9,7 @@ import os
 import inspect, os.path
 import matplotlib.pyplot as plt
 import datetime
+import math
 
 ### METHODS ###
 # Define functions
@@ -22,7 +23,7 @@ def draw_grow(xs, ys, grows, labels, title, colors):
     ncols = 3
     if len(xs) <3:
         ncols = len(xs)
-    fig, axes = plt.subplots(nrows=int(len(ys)/3), ncols=3, sharex=True)
+    fig, axes = plt.subplots(nrows=int(math.ceil(len(ys)/3)), ncols=3, sharex=True)
     plt.subplots_adjust(left=None, bottom=None, right=None, top=3, wspace=None, hspace=None)
         
     for ax, x, y, grow, label in zip(axes.flat, xs, ys, grows, labels):
