@@ -177,8 +177,8 @@ def process_fiat_evolution(exchange_crypto, min_datetime, cur, colors):
     plt.savefig("graph2.png", bbox_inches='tight')
     print(grow_text)
     
-# Load coin list
-def get_coin_list(coinlist_file):
+# Load coin list from the file
+def get_coin_list_file(coinlist_file):
     exchange_crypto = []
     if os.path.exists(coinlist_file):
         with open(coinlist_file) as rfh:
@@ -187,9 +187,17 @@ def get_coin_list(coinlist_file):
                 if not line or line.startswith("#") or line in exchange_crypto:
                     continue
                 exchange_crypto.append(line)
-    return exchange_crypto
+    
+    return exchange_crypto 
 
+# Load active coin list from the db
+def get_coin_list_db(min_datetime, cur):
+    exchange_crypto = []
 
-
-
-
+    sqlite_select_query = "select distinct alt_coin_id from trade_history where state='COMPLETE' and selling=0 and DATE(datetime) > '" + str(min_datetime) +"'"
+    active_coins = cur.execute(sqlite_select_query)
+    
+    for coin in active_coins:
+        exchange_crypto.append(coin[0])
+        
+    return exchange_crypto 
