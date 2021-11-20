@@ -55,6 +55,11 @@ try:
 except:
     enable_coin_value = 0
     
+try:
+    show_active_coin_only = config.get(CFG_SECTION, "show_active_coin_only") == "1"
+except:
+    show_active_coin_only = 0
+    
 original = ORIGINAL_DB_PATH
 target = DB_PATH
 
@@ -84,10 +89,9 @@ if len(url_info) == 0:
 TOKEN = url_info[2]
 CHAT_ID = url_info[3]
 
-exchange_crypto = []
-exchange_crypto = get_coin_list(COINLIST_PATH_FILE)
-
 if sys.argv[1] == "-bn":
+    exchange_crypto = []
+    exchange_crypto = get_coin_list_file(COINLIST_PATH_FILE)
     # Load user.cfg
     USER_CFG_SECTION = "binance_user_config"
     user_config = configparser.ConfigParser()
@@ -113,6 +117,11 @@ elif sys.argv[1] == "-db":
       
     # create the cursor object
     cur = con.cursor()
+    exchange_crypto = []
+    if show_active_coin_only:
+        exchange_crypto = get_coin_list_db(min_datetime,cur)
+    else:
+        exchange_crypto = get_coin_list_file(COINLIST_PATH_FILE)
     process_coin_amount(exchange_crypto,min_datetime,cur,colors)
     sendImage("graph.png",TOKEN,CHAT_ID)
     if enable_coin_value:
