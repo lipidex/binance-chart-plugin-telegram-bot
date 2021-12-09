@@ -2,13 +2,25 @@
 
 This is a program tool based on [Binance Trade Bot].
 
-The intent of this bot is to retrieve the local database trade infomation, e.g. the orders since last database reset, and store it for several plottings. If you have also a Telegram Bot account, it will automaticaly connect to it send the results.
+The intent of this bot is to retrieve the local database trade infomation, e.g. the orders since last database reset, and store it for several types of plottings and text outputs. If you have also a Telegram Bot account, it will automaticaly connect to it send the results.
 To operate the bot creates a backup of the database to not interfere with the main bot
 
 ## Install
 
 Create the file `config` based on `config.example`.
-Insert your path to Binance Trade Bot in `bot_path=`
+
+```
+[config]
+bot_path=your/path/to/binance-trade-bot
+# Datetime format: YYYY-MM-DD 
+min_datetime = 2021-01-01
+# display coin value for each coin
+enable_coin_value = 1
+# display Fiat evolution graph
+enable_fiat_evolution = 1
+# only display active coins
+show_active_coin_only = 1
+```
 
 Then run
 ```
@@ -17,22 +29,22 @@ pip3 install -r requirements.txt
 
 ## Usage
 
-It is possible to generate chart with data retrieved from Binance:
-
-```bash
-python3 -m binance-chart-plugin-telegram-bot -bn
-```
-
-
-As alternative it is possible to use data retrieved from bot database:
+Tt is possible to use data retrieved from bot database, it generates three plots: all the coin amount progress, all the coin valure progress, the overall value of current coin.
+The last two graphs are printed only if `enable_coin_value` and `enable_fiat_evolution` are set to 1, 0 otherwise:
 
 ```bash
 python3 -m binance-chart-plugin-telegram-bot -db
 ```
 
+As alternative tt is possible to generate chart with data retrieved from Binance [WIP - shows only all coin progress of coin list]:
+
+```bash
+python3 -m binance-chart-plugin-telegram-bot -bn
+```
+
 ## Telegram 
 
-The output can be sent to an external service. It detectes the APPRISE file in the bot folder and connect automatically to it 
+The output can be sent to an external service. It detectes the APPRISE file in the bot folder and connect automatically to it.
 
 ## Output example
 
@@ -41,29 +53,58 @@ The output can be sent to an external service. It detectes the APPRISE file in t
   <img src = "graph.example.png">
 </p>
 
+<p align="center">
+  <img src = "graph2.example.png">
+</p>
+
 Summary sent as message:
 ```
-ADA: 8.91 -> 150.5 (+1589.113%)
-ATOM: 0.813 -> 19.524 (+2301.476%)
-BAT: N.A.
-BTT: N.A.
-DASH: 0.07061 -> 0.07248 (+2.648%)
-DOGE: N.A.
-EOS: 1.96 -> 47.26 (+2311.224%)
-ETC: 0.218 -> 4.078 (+1770.642%)
-ICX: 11.04 -> 255.98 (+2218.659%)
-IOTA: 9.69 -> 209.86 (+2065.738%)
-NEO: 0.232 -> 1.999 (+761.638%)
-OMG: 2.29 -> 49.65 (+2068.122%)
-ONT: 9.45 -> 66.04 (+598.836%)
-QTUM: 1.094 -> 27.763 (+2437.751%)
-TRX: 154.0 -> 3437.6 (+2132.208%)
-VET: 114.4 -> 1997.5 (+1646.066%)
-XLM: 28.9 -> 694.1 (+2301.73%)
-XMR: 0.05542 -> 0.9602 (+1632.588%)
+Coin amount
+ATOM: +33.807% 
+ADA: +68.088% 
+BAT: +110.986% 
+BTT: +84.621% 
+CAKE: +9.986% 
+DASH: +27.212% 
+SOL: +54.906% 
+EOS: +94.184% 
+ETC: +72.531% 
+ICX: +42.828% 
+IOTA: +75.491% 
+NEO: +16.123% 
+OMG: +49.507% 
+ONT: -29.614% 
+QTUM: +27.982% 
+ROSE: +8.613% 
+TRX: +51.156% 
+VET: +71.316% 
+XMR: +34.778% 
+
+Coin value
+ATOM: -10.524% 
+ADA: +49.92% 
+BAT: +130.296% 
+BTT: +6.053% 
+CAKE: +19.776% 
+DASH: -10.105% 
+SOL: +10.68% 
+EOS: +128.894% 
+ETC: +120.774% 
+ICX: +16.264% 
+IOTA: +3.663% 
+NEO: +18.429% 
+OMG: +7.387% 
+ONT: -27.752% 
+QTUM: -19.113% 
+ROSE: +1.673% 
+TRX: +122.067% 
+VET: +3.275% 
+XMR: +62.788% 
+
+FIAT evolution: +133.192%
 ```
 
-**Note** : The data shown are not from your binance account. This program is a tool for [Binance Trade Bot] aimed to analize the bot behaviours since the last reset.
+**Note** : This program is a tool for [Binance Trade Bot] aimed to analize the bot behaviours since the last reset. The binance coin progress evaluation feature is still work in progress.
 
 
 [binance trade bot]: https://github.com/edeng23/binance-trade-bot

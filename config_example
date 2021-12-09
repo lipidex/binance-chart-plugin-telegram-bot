@@ -1,4 +1,10 @@
 [config]
-bot_path = /../binance-trade-bot
-min_timestamp_binance = 0
-bridge_binance = USDT
+bot_path=/home/ubuntu/Binance2/binance-trade-bot
+# Datetime format: YYYY-MM-DD 
+min_datetime = 0
+# display coin value for each coin
+enable_coin_value = 1
+# display Fiat evolution graph
+enable_fiat_evolution = 1
+# only display active coins
+show_active_coin_only = 1
